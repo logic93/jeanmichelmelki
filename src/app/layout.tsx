@@ -1,11 +1,53 @@
 import type { Metadata } from "next";
-import { Playfair_Display } from "next/font/google";
+import localFont from "next/font/local";
 import StyledComponentsRegistry from "./lib/registry";
 import "./globals.css";
 
-const playfair_display = Playfair_Display({
-  subsets: ["latin"],
-  display: "swap",
+const PPEditorialNew = localFont({
+  variable: "--pp_editorial_new",
+  src: [
+    {
+      path: "./assets/fonts/PPEditorialNew-Ultralight.woff2",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "./assets/fonts/PPEditorialNew-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./assets/fonts/PPEditorialNew-Ultrabold.woff2",
+      weight: "800",
+      style: "normal",
+    },
+  ],
+});
+
+const PPNeueMontreal = localFont({
+  variable: "--pp_neue_montreal",
+  src: [
+    {
+      path: "./assets/fonts/PPNeueMontreal-Thin.woff2",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "./assets/fonts/PPNeueMontreal-Book.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./assets/fonts/PPNeueMontreal-Medium.woff2",
+      weight: "530",
+      style: "normal",
+    },
+    {
+      path: "./assets/fonts/PPNeueMontreal-Bold.woff2",
+      weight: "800",
+      style: "normal",
+    },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -66,8 +108,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={playfair_display.className}>
+    <html
+      lang="en"
+      className={`${PPEditorialNew.variable} ${PPNeueMontreal.variable}`}
+    >
+      <body>
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>
